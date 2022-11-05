@@ -1,0 +1,230 @@
+<div class="container content" id="messages">
+	<div class="col-lg-12 well">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="pull-left section-title">
+					<span>Add Contact Information : {{firstname}} {{lastname}}</span> <a
+						ng-href="#/employee/search" class="btn pull-right btn-raised"
+						oib-message="form.cancel"></a>
+				</h2>
+			</div>
+		</div>
+		<div>
+			<div class="alert alert-dismissible alert-danger"
+				ng-show="errors.data">
+				<strong oib-message="message.title.errors"></strong> <br />
+				<ul>
+					<li ng-repeat="(key, value) in errors.data">{{value}}</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<div class="alert alert-dismissible alert-success"
+				ng-show="successMessage">
+				<strong oib-message="message.title.success"></strong> <br />
+				<ul>
+					<li ng-bind="successMessage">successMessage</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<form ng-show="vis">
+				<div class="col-sm-12">
+					<div class="row" style="padding: 12px !important">
+						<div class="col-sm-4 form-group">
+							<label>Phone Number</label> <input type="text"
+								class="form-control" ng-model="contact.phoneNumber"> <span
+								ng-show="phonenumber_error" class="help-text error">
+								{{phonenumber_error}} </span>
+						</div>
+						<div class="col-sm-4 form-group">
+							<label>Email</label> <input type="text" required
+								class="form-control" ng-model="contact.email"> <span
+								ng-show="email_error" class="help-text error">
+								{{email_error}} </span>
+						</div>
+						<div class="col-sm-4 form-group">
+							<label>Office Number</label> <input type="text"
+								class="form-control" ng-model="contact.officeNumber"> <span
+								ng-show="officenumber_error" class="help-text error">
+								{{officenumber_error}} </span>
+						</div>
+						<div class="col-sm-4 form-group">
+							<label>City</label> <input type="text" class="form-control"
+								ng-model="contact.city"> <span ng-show="city_error"
+								class="help-text error"> {{city_error}} </span>
+						</div>
+
+						<div class="col-sm-4 form-group">
+							<label>Cell Phone number</label> <input type="text"
+								class="form-control" ng-model="contact.cellPhoneNumber">
+							<span ng-show="cellphonenumber_error" class="help-text error">
+								{{cellphonenumber_error}} </span>
+						</div>
+
+						<div class="col-sm-4 form-group">
+							<label>Address</label> <input type="text" class="form-control"
+								ng-model="contact.address"> <span
+								ng-show="address_error" class="help-text error">
+								{{address_error}} </span>
+						</div>
+
+					</div>
+					<div class="row"
+						style="display: flex; justify-content: center; margin: 24px;">
+						<button type="button" class="flot-right btn btn-lg btn-primary"
+							ng-click='save(contact, contact.phoneNumber, contact.email, 
+							contact.officeNumber, contact.city, contact.cellPhoneNumber, contact.address)'>Save</button>
+					</div>
+
+
+					<!-- <div class="row" ng-show="!editUserId">
+							<div class="col-sm-6 form-group"
+								ng-class="{'has-error is-focused' : errors.data.password}">
+								<label> </label> <input type="password" class="form-control"
+									ng-model="user.password"> <span ng-show="errors.data"
+									class="help-text error"> {{errors.data.password}} </span>
+							</div>
+							<div class="col-sm-6 form-group"
+								ng-class="{'has-error is-focused' : errors.data.confirmPassword || errors.data.valid}">
+								<label></label> <input type="password" class="form-control"
+									ng-model="user.confirmPassword"> <span
+									ng-show="errors.data.confirmPassword" class="help-text error">
+									{{errors.data.confirmPassword}} </span> <span
+									ng-show="errors.data.valid" class="help-text error">
+									{{errors.data.valid}} </span>
+							</div>
+						</div>-->
+
+
+
+
+
+					<!-- 	<div class="col-sm-6 form-group" class=""
+							ng-class="{'has-error is-focused' : errors.data.firstName}">
+							<label class="has-error" for="name" oib-message="form.first.name"></label>
+							<input id="name" type="text"
+								oib-message="form.first.name.placeholder" class="form-control"
+								ng-model="user.firstName"> <span ng-show="errors.data"
+								class="help-text error"> {{errors.data.firstName}} </span>
+						</div>
+						
+						<div class="col-sm-6 form-group"
+							ng-class="{'has-error is-focused' : errors.data.lastName}">
+							<label oib-message="form.last.name"></label> <input type="text"
+								class="form-control" oib-message="form.last.name.placeholder"
+								ng-model="user.lastName"> <span ng-show="errors.data"
+								class="help-text error"> {{errors.data.lastName}} </span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label oib-message="form.address"></label>
+						<textarea oib-message="form.address.placeholder" rows="3"
+							class="form-control" ng-model="user.address"></textarea>
+					</div>
+					<div class="row">  -->
+					<!-- 						<div class="col-sm-4 form-group"> -->
+					<!-- 							<label  oib-message="form.city"></label>  -->
+					<!-- 							<select class="form-control" ng-model="user.city"> -->
+					<!-- 								<option value="1">Addis Ababa</option> -->
+					<!-- 							</select> -->
+					<!-- 						</div> -->
+					<!-- <div class="col-sm-4 form-group">
+							<label>Branch</label> <select class="form-control"
+								ng-model="branch" ng-change='branchCode(branch)'>
+								<option ng-repeat="br in branchesList" value="{{br}}">{{br.branch}}</option>
+							</select>
+						</div>
+
+						<div class="col-sm-4 form-group">
+							<label>Brach Code</label> <input id="name" type="text"
+								class="form-control" ng-model="user.branchCode"
+								readonly="readonly">-->
+					<!-- 							<select class="form-control" ng-model="user.brachCode" ng-value={{br.branchCode}}> -->
+					<!-- 								<option value="1">IT</option> -->
+					<!-- 							</select> -->
+					<!--</div>
+					</div>
+					<div class="row" ng-show="!editUserId">
+						<div class="col-sm-6 form-group"
+							ng-class="{'has-error is-focused' : errors.data.password}">
+							<label oib-message="form.password"> </label> <input
+								type="password" oib-message="form.password.placeholder"
+								class="form-control" ng-model="user.password"> <span
+								ng-show="errors.data" class="help-text error">
+								{{errors.data.password}} </span>
+						</div>
+						<div class="col-sm-6 form-group"
+							ng-class="{'has-error is-focused' : errors.data.confirmPassword || errors.data.valid}">
+							<label oib-message="form.confirm.password"></label> <input
+								type="password" oib-message="form.confirm.password.placeholder"
+								class="form-control" ng-model="user.confirmPassword"> <span
+								ng-show="errors.data.confirmPassword" class="help-text error">
+								{{errors.data.confirmPassword}} </span> <span
+								ng-show="errors.data.valid" class="help-text error">
+								{{errors.data.valid}} </span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<label oib-message="form.phone.number"></label> <input
+								type="text" oib-message="form.phone.number.placeholder"
+								class="form-control" ng-model="user.officePhoneNumber">
+						</div>
+						<div class="col-sm-6 form-group">
+							<label oib-message="form.cellphone"></label> <input type="text"
+								oib-message="form.cellphone.placeholder" class="form-control"
+								ng-model="user.cellPhoneNo">
+						</div>
+					</div>
+					<div class="form-group"
+						ng-class="{'has-error is-focused' : errors.data.email ||  error422(errors.status)}">
+						<label oib-message="form.email"></label> <input type="text"
+							oib-message="form.email.placeholder" class="form-control"
+							ng-model="user.email"> <span
+							ng-show="errors.data.email ||  error422(errors.status)"
+							class="help-text error"> {{errors.data.email ||
+							errors.data.error}} </span>
+					</div>
+
+					<div class="form-group"
+						ng-class="{'has-error is-focused' : errors.data.roles}">
+						<label oib-message="form.roles"></label>
+						<ui-select multiple ng-model="user.roles" theme="bootstrap"
+							ng-disabled="false" title="Choose a role"> <ui-select-match
+							placeholder="Select Role">{{$item.name}}
+						</ui-select-match> <ui-select-choices
+							repeat="role in roles | propsFilter: {name: $select.search}">
+						<strong><div
+								ng-bind-html="role.name | highlight: $select.search"></div></strong> <i><small
+							ng-bind-html="role.description | highlight: $select.search"></small></i>
+						</ui-select-choices> </ui-select>
+						<span ng-show="errors.data.roles || user.roles.length==0"
+							class="help-text error"> {{errors.data.roles}} </span>-->
+
+					<!-- <br />
+					<button type="button" class="btn btn-lg btn-primary"
+						ng-click='save(user)' oib-message="form.save"></button>
+
+					<a ng-href="#/admin/user" class="btn btn-raised"
+						oib-message="form.cancel"></a>
+					<button type="button" ng-show="editUserId"
+						class="btn btn-sm btn-raised pull-right"
+						oib-message="form.disable"></button>
+					&nbsp;&nbsp;&nbsp;
+					<button type="button" ng-show="editUserId"
+						class="btn btn-sm btn-raised pull-right" data-toggle="modal"
+						data-target=".change-selected-user-password"
+						oib-message="form.change.password"></button>
+-->
+			</form>
+
+			<ng-include
+				src="'app/pages/admin/account/password-change-all-user.html'"></ng-include>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,151 @@
+
+<div class="container well content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2 class="pull-left section-title">
+
+				<span>Search employees without contact information</span> <a href="#/employee/view"
+					class="btn btn-primary pull-right btn-sm">Back</a>
+			</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<form>
+			<div class="col-lg-8">
+				<div class="form-group"
+					ng-class="{'has-error is-focused' : errors.data.error}">
+					<label>Search Key:</label> <input type="text" id="searchKey"
+						class="form-control" required="required"
+						ng-model="search.searchKey"
+						placeholder="Enter username or password or name or last name.">
+					<span ng-show="errors.data.error" class="help-text">
+						{{errors.data.error}} </span> <span class="input-group-btn">
+						<button class="btn btn-primary" ng-click='searchDatas(search)'
+							type="button">Search</button>
+
+					</span>
+
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<!-- 	 <h4 ng-show="userAccountList.length >= 0">{{userAccountList.length}} Results found for the search word '{{searchKey}}'</h4> -->
+	<div class="well" ng-show="resultData.length">
+		<table class="table">
+			<thead>
+
+				<tr>
+					<th>No</th>
+					<th>Employee Id</th>
+					<th>Name</th>
+					<th>Department</th>
+					<th>Action</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="r in resultData">
+					<td>{{$index +1}}</td>
+					<td>{{r.email}}</td>
+					<td>{{r.firstname}} {{r.firstname}}</td>
+					<td>{{r.department}}</td>
+					<td>
+						<a href="#/employee/contact/add/{{r.id}}"><button class="btn btn-primary bt-sm"
+							type="button">+ Add Contact</button> </a><span class="label label-success"
+						ng-show="user.enabled">Acive</span>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<th>No</th>
+				<th>Employee Id</th>
+				<th>Name</th>
+				<th>Department</th>
+				<th>Action</th>
+			</tfoot>
+		</table>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- <div class="container well content">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2 class="pull-left section-title">
+				<span>Employees List</span> <a ng-href="#/home"
+					class="btn pull-right btn-raised" oib-message="form.cancel"></a>
+			</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<form style="display: flex !important; align-items: end !important;">
+			<div class="col-md-8">
+				<div class="form-group"
+					ng-class="{'has-error is-focused' : errors.data.error}">
+					<label>Search Key:</label> <input type="text" id="searchKey"
+						class="form-control" required="required"
+						ng-model="search.searchKey" placeholder="Enter Search key">
+
+
+				</div>
+			</div>
+			<div class="col-md-4">
+				<button class="btn btn-primary" ng-click='searchEmployee(search)'
+					style="margin-bottom: 24px !important;" type="button">Search</button>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="well" ng-show="resultData.length">
+		<table class="table">
+			<thead>
+
+				<tr>
+					<th>No</th>
+					<th>Employee Id</th>
+					<th>Name</th>
+					<th>Department</th>
+					<th>Action</th>
+
+					<th style="width: 36px;"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="r in resultSearchData">
+					<td>{{$index +1}}</td>
+					<td><strong><a href="#/newReg/getById/{{r.id}}">{{r.empid}}
+						</a></strong></td>
+					<td>{{r.name}}</td>
+					<td>{{r.department}}</td>
+					<td>
+						<button class="btn btn-primary bt-sm" ng-click='deleteDatas(r)'
+							type="button">Delete</button>  	           <span class="label label-success" ng-show="user.enabled">Acive</span> 
+						</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<th>No</th>
+				<th>Employee Id</th>
+				<th>Name</th>
+				<th>Department</th>
+				<th>Action</th>
+			</tfoot>
+		</table>
+	</div>
+
+</div>
+
+-->
+

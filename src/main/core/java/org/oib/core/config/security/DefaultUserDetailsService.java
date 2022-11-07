@@ -51,8 +51,10 @@ public class DefaultUserDetailsService implements UserDetailsService  {
 			// Or use JDBC to access your database
 			// DbUser is our custom domain user. This is not the same as
 			// Spring's User
+			System.out.println("HERE:::::::::::::::::::::::::::::::" + email);
+			
 			UserAccount internalUser = userDAO.searchDatabase(email);
-
+			System.out.println("HERE:::::::::::::::::::::::::::::::" + internalUser.getEmail());
 			// Populate the Spring User object with details from the dbUser
 			// Here we just pass the email, password, and access level
 			// getAuthorities() will translate the access level to the correct

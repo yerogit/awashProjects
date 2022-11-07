@@ -143,9 +143,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.logout().logoutSuccessUrl("/loginPage?logout"); 
          */
-        
-        
-        
-        
     }
 }

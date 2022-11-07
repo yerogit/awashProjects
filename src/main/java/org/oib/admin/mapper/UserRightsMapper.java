@@ -17,5 +17,4 @@ public interface UserRightsMapper {
     		+ " WHERE "
     		+ " user_role.user_id = #{userId}")
     public List<String> getUserRights(Long userId);
- 
 }

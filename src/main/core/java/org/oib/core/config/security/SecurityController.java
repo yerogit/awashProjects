@@ -21,6 +21,7 @@ public class SecurityController {
     public @ResponseBody
     UserAccount getUserAccount()  {
         UserAccount user = userDAO.searchDatabase(SecurityUtils.getCurrentLogin());
+//        System.out.println("The User is " + user.getEmail());
         user.setPassword(null);
         return user;
     }

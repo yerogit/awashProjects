@@ -5,9 +5,9 @@ import org.oib.core.config.model.BaseModel;
 import lombok.Data;
 
 @Data
-public class Right extends BaseModel {
+public class Rights extends BaseModel {
 	
 	private String code;
 	private String description;
-
+	private String status;
 }

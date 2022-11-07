@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-public class Role extends BaseModel {
+public class Roles extends BaseModel {
 
 	@NotEmpty(message = "{code.required}")
 	private String code;
@@ -21,7 +21,9 @@ public class Role extends BaseModel {
 	
 	private String description;
 	
+	private String status;
+	
 	@NotEmpty(message = "{rights.required}")
-	private Collection<Right> rights;
+	private Collection<Rights> rights;
 	
 }

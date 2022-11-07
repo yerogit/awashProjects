@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.oib.model.Role;
+import org.oib.model.Roles;
 import org.oib.model.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -84,12 +84,12 @@ public class DefaultUserDetailsService implements UserDetailsService  {
 	 * @return collection of granted authorities
 	 */
 	@SuppressWarnings("deprecation")
-	public Collection<GrantedAuthority> getAuthorities(Collection<Role> roles) {
+	public Collection<GrantedAuthority> getAuthorities(Collection<Roles> roles) {
 		
 		// Create a list of grants for this user
 		List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>(1);
 
-		for(Role role : roles){
+		for(Roles role : roles){
 			
 			authList.add(
 				new GrantedAuthority() {

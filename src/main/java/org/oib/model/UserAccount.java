@@ -1,9 +1,6 @@
 package org.oib.model;
 
 import java.util.Collection;
-import java.util.List;
-
-import javax.validation.constraints.AssertTrue;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -20,47 +17,30 @@ import lombok.ToString;
 @ToString
 public class UserAccount extends BaseModel {
 	
-	private Long role;
-	
-	@Email(message = "{email.invalid}")
-	@NotEmpty(message = "{email.required}")
-	private String empid;
-	
-	private String gender;
-	
-	private String photolocation;
-	
-	@NotEmpty(message = "{firstName.required}")
+	@NotEmpty(message = "{firstname.required}")
 	private String firstname;
 
-	@NotEmpty(message = "{lastName.required}")
+	@NotEmpty(message = "{lastname.required}")
 	private String lastname;
-
+	
 	private String department;
 
 	@NotEmpty(message = "{password.required}")
 	private String password;
-
-	@NotEmpty(message = "{confirmPassword.required}")
-	private String confirmPassword;
-
-	private int enabled;
 	
-	private List<String> rights;
-	
+	private String gender;
+
+	private String status;
+
 	@Email(message = "{email.invalid}")
 	@NotEmpty(message = "{email.required}")
 	private String email;
 
-	@NotEmpty(message = "{roles.required}")
-	private Collection<Role> roles;
 	
-	@AssertTrue(message = "{confirmPassword.not.match}")
-	private boolean isValid() {
-		if (password == null) {
-			return confirmPassword == null;
-		} else {
-			return password.equals(confirmPassword);
-		}
-	}
+	@NotEmpty(message = "{roles.required}")
+	private Collection<Roles> roles;
+	
+	@NotEmpty(message = "{rights.required}")
+	private Collection<Rights> rights;
+
 }

@@ -1,23 +1,25 @@
 package org.oib.model;
 
+import java.util.Collection;
+
 import org.oib.core.config.model.BaseModel;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Contacts extends BaseModel{
-	private String phoneNumber;
+
+	private String phonenumber;
 	private String email;
-	private String officePhoneNumber;
-	private String officeNumber;
+	private String officenumber;
 	private String city;
-	private String cellPhoneNumber;
+	private String cellphonenumber;
 	private String address;
 	private String status;
-	private Long user_id;
-	private Long contact_id;
 }

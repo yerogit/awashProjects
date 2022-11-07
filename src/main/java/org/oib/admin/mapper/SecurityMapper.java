@@ -16,7 +16,6 @@ public interface SecurityMapper {
 	@Results(value = { @Result(property = "id", column = "id"),
 			@Result(property = "roles", javaType = List.class, column = "id", many = @Many(select = "org.oib.admin.mapper.UserRoleMapper.getRolesByUserId")),
 			@Result(property = "rights", javaType = List.class, column = "id", many = @Many(select = "org.oib.admin.mapper.UserRightsMapper.getUserRights"))
-
 	})
 	public UserAccount searchUser(String email);
 }

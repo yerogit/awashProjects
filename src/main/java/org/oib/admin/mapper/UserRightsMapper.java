@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.oib.model.Right;
-import org.oib.model.Role;
+import org.oib.model.Rights;
+import org.oib.model.Roles;
 
 @Mapper
 public interface UserRightsMapper {
@@ -17,5 +17,4 @@ public interface UserRightsMapper {
     		+ " WHERE "
     		+ " user_role.user_id = #{userId}")
     public List<String> getUserRights(Long userId);
- 
 }

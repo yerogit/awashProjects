@@ -30,7 +30,7 @@ public class UserAccount extends BaseModel {
 	
 	private String gender;
 
-	private String status;
+	private String  status;
 
 	@Email(message = "{email.invalid}")
 	@NotEmpty(message = "{email.required}")

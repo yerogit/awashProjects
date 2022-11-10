@@ -148,13 +148,6 @@ APP.config(function($routeProvider, USER_ROLES, $httpProvider) {
 			loginRequired : true,
 			authorizedRights : [ USER_ROLES.all ]
 		}
-	}).when("/employee/contactview", {
-		templateUrl : "/partials/employee/contact_listview.html",
-		controller : "contact-controller",
-		access : {
-			loginRequired : true,
-			authorizedRights : [ USER_ROLES.all ]
-		}
 	}).otherwise({
 		redirectTo : '/error/404',
 		access : {

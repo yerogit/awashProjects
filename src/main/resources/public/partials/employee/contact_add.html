@@ -5,7 +5,7 @@
 				<h2 class="pull-left section-title">
 					<span>Add Contact Information : {{firstname}} {{lastname}}</span> <a
 						ng-href="#/employee/search" class="btn pull-right btn-raised"
-						oib-message="cancel"></a>
+						oib-message="form.cancel"></a>
 				</h2>
 			</div>
 		</div>
@@ -34,30 +34,33 @@
 					<div class="row" style="padding: 12px !important">
 						<div class="col-sm-4 form-group">
 							<label>Phone Number</label> <input type="text"
-								class="form-control" ng-model="contact.phonenumber"> <span
+								class="form-control" ng-model="contact.phoneNumber"> <span
 								ng-show="phonenumber_error" class="help-text error">
 								{{phonenumber_error}} </span>
 						</div>
-					
-						<div class="col-sm-4 form-group">
-							<label>Office Number</label> <input type="text"
-								class="form-control" ng-model="contact.officenumber"> <span
-								ng-show="officenumber_error" class="help-text error">
-								{{officenumber_error}} </span>
-						</div>
-						
-						<div class="col-sm-4 form-group">
-							<label>Cell Phone number</label> <input type="text"
-								class="form-control" ng-model="contact.cellphonenumber">
-							<span ng-show="cellphonenumber_error" class="help-text error">
-								{{cellphonenumber_error}} </span>
-						</div>
-						
 						<div class="col-sm-4 form-group">
 							<label>Email</label> <input type="text" required
 								class="form-control" ng-model="contact.email"> <span
 								ng-show="email_error" class="help-text error">
 								{{email_error}} </span>
+						</div>
+						<div class="col-sm-4 form-group">
+							<label>Office Number</label> <input type="text"
+								class="form-control" ng-model="contact.officeNumber"> <span
+								ng-show="officenumber_error" class="help-text error">
+								{{officenumber_error}} </span>
+						</div>
+						<div class="col-sm-4 form-group">
+							<label>City</label> <input type="text" class="form-control"
+								ng-model="contact.city"> <span ng-show="city_error"
+								class="help-text error"> {{city_error}} </span>
+						</div>
+
+						<div class="col-sm-4 form-group">
+							<label>Cell Phone number</label> <input type="text"
+								class="form-control" ng-model="contact.cellPhoneNumber">
+							<span ng-show="cellphonenumber_error" class="help-text error">
+								{{cellphonenumber_error}} </span>
 						</div>
 
 						<div class="col-sm-4 form-group">
@@ -66,21 +69,15 @@
 								ng-show="address_error" class="help-text error">
 								{{address_error}} </span>
 						</div>
-						
-						<div class="col-sm-4 form-group">
-							<label>City</label> <input type="text" class="form-control"
-								ng-model="contact.city"> <span ng-show="city_error"
-								class="help-text error"> {{city_error}} </span>
-						</div>
 
 					</div>
 					<div class="row"
 						style="display: flex; justify-content: center; margin: 24px;">
 						<button type="button" class="flot-right btn btn-lg btn-primary"
-							ng-click='save(contact, contact.phonenumber, contact.email, 
-							contact.officenumber, contact.city, contact.cellphonenumber, contact.address)'>Save</button>
+							ng-click='save(contact, contact.phoneNumber, contact.email, 
+							contact.officeNumber, contact.city, contact.cellPhoneNumber, contact.address)'>Save</button>
 					</div>
-		
+				</div>
 			</form>
 
 			<ng-include

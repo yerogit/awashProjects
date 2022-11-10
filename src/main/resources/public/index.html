@@ -29,31 +29,12 @@
 <body>
 
 <div ng-if="authenticated" ng-include="'partials/navbar.html'"></div>
-<div class="callaction" style="background-color: midnightblue; height:130px;padding:0px; marign:0px;" >
-      <div class="container" >
-        <div class="row">
-          <div class="span12">
-            <div class="big-cta">
-              <div class="cta-text">
-              <br><br>
-                <strong>  <h3 style="color: azure;float:left; ">Employee Management System <span class="highlight"></span></strong></h3>
-             
-               
-                <a style="float:right;background-color:#f59134; color:white;" class="btn btn-large btn-theme btn-rounded" href="#">Add Employee</a>
-             
-            </div>
-          </div>
-        </div>
-      </div><br><br><br>
+
 <div class="container">
     <div style="position: relative">
         <div ng-view="" class="fade"></div>
     </div>
 </div>
-</div>
-</div>
-
-
 
 <!-- inject:js -->
 
@@ -88,5 +69,4 @@
 
 <!-- we have to start writing comment -->
 </body>
-
 </html>

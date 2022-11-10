@@ -185,32 +185,11 @@ APP
 							}
 						}
 					}
-				}).controller('RoleViewController', _roleViewController)
-		.controller('ContactListviewController', _ContactListviewController)
-		.controller('EmployeeViewController', _EmployeeViewController)
-		.controller('UnitController', _UnitController)
-		.controller('SearchEmployee', _SearchEmployee)
-		.controller('ContactAddController', _ContactAddController);
-//		.controller('ContactEditController', _ContactEditController);
-
-function _SearchEmployee($rootScope, $scope, theService, $routeParams, $route) {
-
-	$scope.searchDatas = function(keys) {
-		theService.searchDatas.query(keys, sucess, error);
-
-		function sucess(data) {
-			$scope.resultData = data;
-			$scope.errors = null;
-
-		}
-		function error(obj) {
-			$scope.successMessage = null;
-			$scope.errors = obj;
-
-		}
-
-	}
-};
+				}).controller('ContactListviewController',
+				_ContactListviewController).controller('UnitController',
+				_UnitController).controller('ContactAddController',
+				_ContactAddController).controller('ContactEditController',
+				_ContactEditController);
 
 /**
  * Account Role controller
@@ -221,6 +200,100 @@ function _SearchEmployee($rootScope, $scope, theService, $routeParams, $route) {
  * @param $routeParams
  * @returns
  */
+
+function _ContactEditController($rootScope, $scope, Service, $routeParams) {
+	$scope.vis = "visible";
+
+	$scope.contact = getContact();
+	function getContact() {
+		return Service.contact.get({
+			"id" : $routeParams.id
+		}, success, error);
+	}
+
+	function success(data) {
+		$scope.contact = data;
+		$scope.contact.phoneNumber = data.phonenumber;
+		$scope.contact.officeNumber = data.officenumber;
+		$scope.contact.cellPhoneNumber = data.cellphonenumber;
+	}
+	function error(data) {
+		$scope.successMessage = null;
+		$scope.errors = data;
+	}
+
+	$scope.save = function(datas, phonenumber, email, officenumber, city,
+			cellphonenumber, address) {
+
+		if (phonenumber == null) {
+			$scope.phonenumber_error = "Empty Field";
+		} else {
+			$scope.phonenumber_error = null;
+		}
+		if (email == null) {
+			console.log("email null");
+			$scope.email_error = "Empty Field";
+		} else {
+			console.log("email not null");
+			$scope.email_error = null;
+		}
+		if (officenumber == null) {
+			$scope.officenumber_error = "Empty Field";
+		} else {
+			$scope.officenumber_error = null;
+		}
+		if (city == null) {
+			$scope.city_error = "Empty Field";
+		} else {
+			$scope.city_error = null;
+		}
+		if (cellphonenumber == null) {
+			$scope.cellphonenumber_error = "Empty Field";
+		} else {
+			$scope.cellphonenumber_error = null;
+		}
+		if (address == null) {
+			$scope.address_error = "Empty Field";
+		} else {
+			$scope.address_error = null;
+		}
+		if (phonenumber != null && email != null && officenumber != null
+				&& city != null && cellphonenumber != null && address != null) {
+			datas.status = 1;
+			datas.contact_id = $routeParams.id;
+			Service.saveContact.save(datas, success, error);
+
+			function success(obj) {
+				// console.log("success");
+				$scope.successMessage = "Saved!"
+				$scope.errors = null;
+				$scope.contact.phoneNumber = "";
+				$scope.contact.email = "";
+				$scope.contact.officeNumber = "";
+				$scope.contact.city = "";
+				$scope.contact.cellPhoneNumber = "";
+				$scope.contact.address = "";
+				$scope.vis = null;
+			}
+			function error(obj) {
+				// console.log("error");
+				$scope.successMessage = null;
+				$scope.errors = obj;
+
+			}
+		}
+
+	}
+
+}
+
+function _ContactListviewController($rootScope, $scope, ContactService,
+		$routeParams) {
+	$scope.resultData_contacts = getAllContacts();
+	function getAllContacts() {
+		return ContactService.contacts.query();
+	}
+}
 
 function _ContactAddController($rootScope, $scope, Service, $routeParams) {
 	$scope.vis = "visible";
@@ -305,129 +378,6 @@ function _ContactAddController($rootScope, $scope, Service, $routeParams) {
 	}
 
 }
-
-function _ContactListviewController($rootScope, $scope, ContactService,
-		$routeParams) {
-	$scope.resultData_contacts = getAllContacts();
-	function getAllContacts() {
-		return ContactService.contacts.query();
-	}
-}
-
-function _ContactAddController($rootScope, $scope, Service, $routeParams) {
-	$scope.vis = "visible";
-
-	$scope.contact = getContact($routeParams.id);
-	function getContact() {
-		var k = Service.contact.get({
-			"id" : $routeParams.id
-		}, success, error);
-		return k;
-
-	}
-
-	function success(data) {
-		$scope.contact = data;
-		$scope.contact.phoneNumber = data.phonenumber;
-		$scope.contact.officeNumber = data.officenumber;
-		$scope.contact.cellPhoneNumber = data.cellphonenumber;
-	}
-	function error(data) {
-		$scope.successMessage = null;
-		$scope.errors = data;
-	}
-	
-	$scope.save = function(datas, phonenumber, email, officenumber, city,
-			cellphonenumber, address) {
-
-		if (phonenumber == null) {
-			$scope.phonenumber_error = "Empty Field";
-		} else {
-			$scope.phonenumber_error = null;
-		}
-		if (email == null) {
-			console.log("email null");
-			$scope.email_error = "Empty Field";
-		} else {
-			console.log("email not null");
-			$scope.email_error = null;
-		}
-		if (officenumber == null) {
-			$scope.officenumber_error = "Empty Field";
-		} else {
-			$scope.officenumber_error = null;
-		}
-		if (city == null) {
-			$scope.city_error = "Empty Field";
-		} else {
-			$scope.city_error = null;
-		}
-		if (cellphonenumber == null) {
-			$scope.cellphonenumber_error = "Empty Field";
-		} else {
-			$scope.cellphonenumber_error = null;
-		}
-		if (address == null) {
-			$scope.address_error = "Empty Field";
-		} else {
-			$scope.address_error = null;
-		}
-		if (phonenumber != null && email != null && officenumber != null
-				&& city != null && cellphonenumber != null && address != null) {
-			datas.status = 1;
-			datas.contact_id = $routeParams.id;
-			Service.saveContact.save(datas, success, error);
-
-			function success(obj) {
-				// console.log("success");
-				$scope.successMessage = "Saved!"
-				$scope.errors = null;
-				$scope.contact.phoneNumber = "";
-				$scope.contact.email = "";
-				$scope.contact.officeNumber = "";
-				$scope.contact.city = "";
-				$scope.contact.cellPhoneNumber = "";
-				$scope.contact.address = "";
-				$scope.vis = null;
-			}
-			function error(obj) {
-				// console.log("error");
-				$scope.successMessage = null;
-				$scope.errors = obj;
-
-			}
-		}
-
-	}
-
-	
-	
-}
-
-function _roleViewController($rootScope, $scope, RoleService, $routeParams) {
-	$scope.resultData = getAllRoles();
-	function getAllRoles() {
-		return RoleService.roles.query();
-	}
-}
-
-function _ContactListviewController($rootScope, $scope, ContactService,
-		$routeParams) {
-	$scope.resultData_contacts = getAllContacts();
-	function getAllContacts() {
-		return ContactService.contacts.query();
-	}
-}
-
-function _EmployeeViewController($rootScope, $scope, Service, $routeParams) {
-	$scope.resultData_users = getAllUsers();
-	function getAllUsers() {
-		return Service.users.query();
-		;
-	}
-}
-
-
 
 function _UnitController($rootScope, $scope, Service, $routeParams) {
 	$scope.unit_name_error = null;

@@ -1,0 +1,72 @@
+
+<div class="well page">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2 class="pull-left section-title">
+				<span>Employee Contact</span> <a ng-href="#/home"
+					class="btn pull-right btn-raised" oib-message="form.cancel">Cancel</a>
+			</h2>
+		</div>
+	</div>
+	<div>
+		<div class="alert alert-dismissible alert-danger"
+			ng-show="errors.data">
+			<strong oib-message="message.title.errors"></strong> <br />
+			<ul>
+				<li ng-repeat="(key, value) in errors.data">{{value}}</li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<div class="alert alert-dismissible alert-success"
+			ng-show="successMessage">
+			<strong oib-message="message.title.success"></strong> <br />
+			<ul>
+				<li ng-bind="successMessage">successMessage</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row col-md-offset-2 custyle" style="padding: 35px;">
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<a href=""
+					class="btn btn-primary btn-xs pull-right"><b>+</b> Add Contact</a>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Gender</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Office No</th>
+					<th>Additional phone</th>
+					<th>City</th>
+					<th>Address</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+
+			<tr ng-repeat="view in contactview">
+				<td>{{$index +1}}</td>
+				<td>{{!view.firstname?'-':view.firstname}} {{!view.lastname?'-':view.lastname}}</td>
+				<td>{{!view.gender?'-':view.gender}}</td>
+				<td>{{!view.empid?'-':view.empid}}</td>
+				<td>{{!view.phonenumber?'-':view.phonenumber}}</td>
+				<td>{{!view.officenumber?'-':view.officenumber}}</td>
+				<td>{{!view.cellphonenumber?'-':view.cellphonenumber}}</td>
+				<td>{{!view.city?'-':view.city}}</td>
+				<td>{{!view.address?'-':view.address}}</td>
+				<td><a href=""><button class="btn btn-primary bt-sm"
+							style="background-color: #d2d94e !important;" type="button">Edit</button></a>
+				</td>
+				<td>
+					<button class="btn btn-primary bt-sm"
+						style="background-color: #d94e4e !important;" type="button">
+						<!-- ng-click='deleteContact(r.id)' -->
+						Delete
+					</button>
+				</td>
+
+			</tr>
+			

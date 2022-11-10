@@ -1,0 +1,91 @@
+<div class="well page">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2 class="pull-left section-title">
+				<span>Employees List</span> <a ng-href="#/home"
+					class="btn pull-right btn-raised" oib-message="form.cancel"
+					style="background: #273896; color: white;"
+					onMouseOver="this.style.background='#f59134'"
+					onMouseOut="this.style.background='#273896'"></a>
+			</h2>
+		</div>
+	</div>
+	<div>
+		<div class="alert alert-dismissible alert-danger"
+			ng-show="errors.data">
+			<strong oib-message="message.title.errors"></strong> <br />
+			<ul>
+				<li ng-repeat="(key, value) in errors.data">{{value}}</li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<div class="alert alert-dismissible alert-success"
+			ng-show="successMessage">
+			<strong oib-message="message.title.success"></strong> <br />
+			<ul>
+				<li ng-bind="successMessage">successMessage</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row col-md-offset-2 custyle" style="padding: 35px;">
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<a href="#/employee/register"
+					style="background: #273896 !important;"
+					class="btn btn-primary btn-xs pull-right"
+					onMouseOver="this.style.background='#f59134'"
+					onMouseOut="this.style.background='#273896'"><b>+</b> Add
+					Employee</a>
+				<a href="#/employee/search" style="background: #273896 !important;"
+					class="btn btn-primary btn-xs pull-right"
+					onMouseOver="this.style.background='#f59134'"
+					onMouseOut="this.style.background='#273896'"><b>+</b> Add
+					Contact</a>
+				<tr>
+					<th>ID</th>
+					<th>Employee Id</th>
+					<th>Name</th>
+					<th>Gender</th>
+					<th>Unit</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tr ng-repeat="r in resultData_users">
+				<td style="color: #273896;">{{$index +1}}</td>
+				<td style="color: #273896;">{{r.email}}</td>
+				<td style="color: #273896;">{{r.firstname}} {{r.lastname}}</td>
+				<td style="color: #273896;">{{r.gender}}</td>
+				<td style="color: #273896;">{{r.department}}</td>
+
+				<td>
+					<button class="btn btn-primary bt-sm" ng-click='deleteDatas(r)'
+						type="button" onMouseOver="this.style.background='#f59134'"
+						onMouseOut="this.style.background='#273896'"
+						style="background: #273896 !important;">Edit</button>
+				</td>
+				<td>
+					<button class="btn btn-primary bt-sm"
+						style="background-color: #d94e4e !important;"
+						ng-click='deleteDatas(r)' type="button">Delete</button> <!-- <span class="label label-success"
+					ng-show="user.enabled">Acive</span> <span
+					class="label label-danger" ng-show="!user.enabled">Disabled</span> -->
+				</td>
+
+			</tr>
+			<tfoot>
+				<tr>
+					<th>ID</th>
+					<th>Employee Id</th>
+					<th>Name</th>
+					<th>Gender</th>
+					<th>Unit</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

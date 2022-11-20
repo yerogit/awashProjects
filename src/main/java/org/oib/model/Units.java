@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class Units extends BaseModel{
 
-	private String name;
+	private String departmentName;
 	private String description;
-	private String status;
+	private int status;
 }

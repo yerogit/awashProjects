@@ -1,0 +1,76 @@
+
+<div class="container content" id="messages">
+	<div class="col-lg-12 well">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="pull-left section-title">
+					<span>Department Registration Form</span> <a
+						ng-href="#/admin/department" class="btn pull-right btn-raised">Back</a>
+				</h2>
+			</div>
+		</div>
+		<div>
+			<div class="alert alert-dismissible alert-danger"
+				ng-show="errors.data">
+				<strong oib-message="message.title.errors"></strong> <br />
+				<ul>
+					<li ng-repeat="(key, value) in errors.data">{{value}}</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<div class="alert alert-dismissible alert-success"
+				ng-show="successMessage">
+				<strong oib-message="message.title.success"></strong> <br />
+				<ul>
+					<li ng-bind="successMessage">successMessage</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<form>
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-6 form-group" class=""
+							ng-class="{'has-error is-focused' : errors.data.firstName}">
+							<label class="has-error" for="name">Department Name</label> <input
+								id="name" type="text" placeholder="enter department name"
+								class="form-control" ng-model="department.departmentName">
+							<span ng-show="errors.data" class="help-text error">
+								{{errors.data.departmentName}} </span>
+						</div>
+						<div class="col-sm-6 form-group"
+							ng-class="{'has-error is-focused' : errors.data.lastName}">
+							<label>Description</label> <input type="text"
+								class="form-control" placeholder="enter dept description"
+								ng-model="department.description"> <span
+								ng-show="errors.data" class="help-text error">
+								{{errors.data.description}} </span>
+						</div>
+
+					</div>
+					 				 
+				</div>
+
+				<br />
+				<button type="button" class="btn btn-lg btn-primary pull-right"
+					ng-click='saveUnit(department)'>Save</button>
+		</div>
+		
+		
+		</form>
+
+		<ng-include
+			src="'app/pages/admin/account/password-change-all-user.html'"></ng-include>
+
+	</div>
+
+</div>
+
+</div>
+
+
+
+
+

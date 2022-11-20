@@ -134,14 +134,24 @@ APP.config(function($routeProvider, USER_ROLES, $httpProvider) {
 			loginRequired : true,
 			authorizedRights : [ USER_ROLES.all ]
 		}
-	}).when('/employee/contact/edit/:id', {
-		templateUrl : 'partials/employee/contact_edit.html',
-		controller : 'ContactEditController',
+	}).when("/partials/employee/newdepartment", {
+		templateUrl : "partials/employee/newDepartment.html",
+		controller : "UnitController",
 		access : {
+			
 			loginRequired : true,
 			authorizedRights : [ USER_ROLES.all ]
 		}
-	}).when("/error/:code", {
+	}).when("/partials/employee/edit/:id", {
+		templateUrl : "partials/employee/unit_edit.html",
+		controller : "UnitController",
+		access : {
+			
+			loginRequired : true,
+			authorizedRights : [ USER_ROLES.all ]
+		}
+	})
+	.when("/error/:code", {
 		templateUrl : "partials/error.html",
 		controller : "ErrorController",
 		access : {
@@ -155,6 +165,14 @@ APP.config(function($routeProvider, USER_ROLES, $httpProvider) {
 			authorizedRights : [ USER_ROLES.all ]
 		}
 	});
+//	.when('/employee/contact/edit/:id', {
+//	templateUrl : 'partials/employee/contact_edit.html',
+//	controller : 'ContactEditController',
+//	access : {
+//		loginRequired : true,
+//		authorizedRights : [ USER_ROLES.all ]
+//	}
+//})
 });
 	
 APP.run(function(RunService) {
